@@ -31,7 +31,6 @@ public class Parser {
         }
         return args;
     }
-    // get the command name if valid
     public String getCommandName() {
         return commandName;
     }
