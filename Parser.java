@@ -6,7 +6,10 @@ public class Parser {
 
     // check if the command is valid
     public boolean parse(String command) {
-
+        if (commandName.equals("echo"))
+            return true;
+        else if (commandName.equals("cat"))
+            return true;
         return false;
     }
     // parse the input to --> command + list of arguments
@@ -27,6 +30,7 @@ public class Parser {
         }
         else {
             // remove the command name from the list
+            commandName = args[0];
             args = Arrays.copyOfRange(args, 1, args.length);
         }
         return args;

@@ -1,13 +1,31 @@
+import java.io.File;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
 
         Parser parser = new Parser();
+        Terminal terminal = new Terminal();
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        parser.parse(input);
-        System.out.println(Arrays.toString(parser.getArgs(input)));
-        System.out.println(parser.getCommandName());
+        String[] arr = parser.getArgs(input);
+
+        String command = parser.getCommandName();
+        if (parser.parse(command)){
+            if (command.equals("echo"))
+                terminal.echo(arr);
+            else if (command.equals("cat"))
+                terminal.cat(arr);
+        }
+
     }
+
+
+
+        //System.out.println(command);
+        //System.out.println(parser.parse(command));
+
 }
