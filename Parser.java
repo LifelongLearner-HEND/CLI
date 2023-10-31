@@ -10,6 +10,11 @@ public class Parser {
             return true;
         else if (commandName.equals("cat"))
             return true;
+        else if (commandName.equals("rm")) {
+            return true;
+        }
+        else if (commandName.equals("wc"))
+            return true;
         return false;
     }
     // parse the input to --> command + list of arguments

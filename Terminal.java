@@ -53,5 +53,53 @@ public class Terminal {
         else
             System.out.println("An error occurred.");
     }
+    void rm(String[] arr){
+        if (arr.length == 1){
+            File file = new File(arr[0]);
+            if (file.delete()) {
+                System.out.println("Deleted the file: " + file.getName());
+            } else {
+                System.out.println("An error occurred.");
+            }
+        }
+        else
+            System.out.println("An error occurred.");
+    }
+    void wc (String[] arr){
+        if (arr.length == 1){
+            int lines = 0,words = 0,characters = 0;
+            try {
+                File file = new File(arr[0]);
+                Scanner scl = new Scanner(file);
+                while (scl.hasNextLine()) {
+                    scl.nextLine();
+                    lines++;
+                }
+                Scanner scw = new Scanner(file);
+                while (scw.hasNext()){
+                    scw.next();
+                    words++;
+                }
+                Scanner scc = new Scanner(file);
+                while (scc.hasNext()){
+                    String temp = scc.nextLine();
+                    characters += temp.length();
+                }
+                scl.close();
+                scw.close();
+                scc.close();
+                System.out.print(lines);
+                System.out.print(" ");
+                System.out.print(words);
+                System.out.print(" ");
+                System.out.print(characters);
+                System.out.print(" ");
+                System.out.println(arr[0]);
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

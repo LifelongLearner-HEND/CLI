@@ -3,6 +3,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.*;
+import java.io.File;  // Import the File class
+
 
 public class Main {
     public static void main(String[] args) {
@@ -19,13 +22,18 @@ public class Main {
                 terminal.echo(arr);
             else if (command.equals("cat"))
                 terminal.cat(arr);
+            else if (command.equals("rm"))
+                terminal.rm(arr);
+            else if (command.equals("wc"))
+                terminal.wc((arr));
         }
 
     }
 
 
 
-        //System.out.println(command);
+    //System.out.println(command);
         //System.out.println(parser.parse(command));
+
 
 }
