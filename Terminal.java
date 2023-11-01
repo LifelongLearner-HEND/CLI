@@ -9,7 +9,10 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class Terminal {
 
     //Method pwd that takes no argument and prints the current directory name for user
-    public static String pwd (){
+    public static String pwd (String [] args){
+        if(args.length != 0){
+            return "Invalid arguments this method does not take an argument";
+        }
 
         return System.getProperty("user.dir");
 
@@ -24,6 +27,18 @@ public class Terminal {
             directory = Paths.get(arg);
             //Path.get() method returns a Path object that represents the file or directory specified by the input String.
             //automatically handles platform-specific path syntax (such as using backslashes on Windows and forward slashes on Unix-based systems)
+
+            // check if directory is not empty
+            if( directory.toString().equals( "" ) ){
+                System.out.println("Failed to make Directory missing name ");
+                return;
+            }
+            //check if directory already exists
+            if (Files.exists(directory) ) {
+                System.out.println( "Directory already exists: " + directory );
+                continue;
+
+            }
 
             //in this case
 
@@ -48,9 +63,20 @@ public class Terminal {
     //Copies file to another file
     public static void cp(String [] args) throws IOException {
 
+        if(args.length != 2){
+            System.out.println("invalid number of arguments ");
+        }
+
         Path sourcePath = Paths.get( args[0] );
         Path destinationPath = Paths.get( args[1] );
 
+
+        //check if directory already exists
+
+        if (Files.exists(destinationPath) ) {
+            System.out.println( "File already exists: " + destinationPath );
+            return;
+        }
 
         //Checks is source file exists
         //we don't have to check on the destination file,because if it doesn't exist it will be created in the file directory
@@ -66,16 +92,27 @@ public class Terminal {
             }
         }
         else {
-            throw new IOException("Source file does not exist: " + sourcePath );
+            System.out.println(" Source file does not exist" + sourcePath);
         }
 
 
     }
 
     public static void cp_r(String [] args ) throws IOException {
+
+        if(args.length != 2){
+            System.out.println("invalid number of arguments ");
+        }
+
         // Convert source and destination paths to Path objects for better manipulation
         Path sourcePath = Paths.get(args[0]);
         Path destinationPath = Paths.get(args[1]);
+
+        //check if directory already exists
+        if (Files.exists(destinationPath) ) {
+            System.out.println( "Directory already exists: " + destinationPath );
+            return;
+        }
 
         // Checking if the source path exists
         // Don't have to check on the target(to be copied),because if it doesn't exist it will be created in the same directory
