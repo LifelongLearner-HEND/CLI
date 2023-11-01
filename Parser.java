@@ -21,7 +21,7 @@ public class Parser {
                 Map.entry("cp -r", true),
                 Map.entry("rm", true),
                 Map.entry("cat", true),
-                Map.entry("ec", true)
+                Map.entry("wc", true)
         );
         return validCommands.containsKey(command);
     }
