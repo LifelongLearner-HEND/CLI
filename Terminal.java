@@ -6,7 +6,7 @@ import java.nio.file.StandardCopyOption;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-public class Tirminal {
+public class Terminal {
 
     //Method pwd that takes no argument and prints the current directory name for user
     public static String pwd (){
