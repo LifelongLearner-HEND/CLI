@@ -1,13 +1,29 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 public class Parser {
     private String commandName;
     private String[] args;
 
     // check if the command is valid
     public boolean parse(String command) {
-
-        return false;
+        Map<String, Boolean> validCommands = Map.ofEntries(
+                Map.entry("ls", true),
+                Map.entry("ls -r", true),
+                Map.entry("cd", true),
+                Map.entry("touch", true),
+                Map.entry("history", true),
+                Map.entry("pwd", true),
+                Map.entry("mkdir", true),
+                Map.entry("cp", true),
+                Map.entry("cp -r", true),
+                Map.entry("rm", true),
+                Map.entry("cat", true),
+                Map.entry("ec", true)
+        );
+        return validCommands.containsKey(command);
     }
     // parse the input to --> command + list of arguments
     public String[] getArgs(String input) {
@@ -31,7 +47,6 @@ public class Parser {
         }
         return args;
     }
-    // get the command name if valid
     public String getCommandName() {
         return commandName;
     }
