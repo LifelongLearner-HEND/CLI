@@ -46,10 +46,10 @@ public class Tirminal {
     }
 
     //Copies file to another file
-    public static void cp(String source , String destination) throws IOException {
+    public static void cp(String [] args) throws IOException {
 
-        Path sourcePath = Paths.get( source );
-        Path destinationPath = Paths.get( destination );
+        Path sourcePath = Paths.get( args[0] );
+        Path destinationPath = Paths.get( args[1] );
 
 
         //Checks is source file exists
@@ -72,10 +72,10 @@ public class Tirminal {
 
     }
 
-    public static void cp_r(String source, String destination) throws IOException {
+    public static void cp_r(String [] args ) throws IOException {
         // Convert source and destination paths to Path objects for better manipulation
-        Path sourcePath = Paths.get(source);
-        Path destinationPath = Paths.get(destination);
+        Path sourcePath = Paths.get(args[0]);
+        Path destinationPath = Paths.get(args[1]);
 
         // Checking if the source path exists
         // Don't have to check on the target(to be copied),because if it doesn't exist it will be created in the same directory
