@@ -35,12 +35,10 @@ public class Parser {
         commandName = args[0];
 
         // handling "cp -r" and "ls -r" command
-        if((commandName.equals("cp") || commandName.equals("ls")) && args.length > 1) {
-            if(args[1].equals("-r")) {
-                commandName += " -r";
-                // remove the "-r" and commandName from the list
-                args = Arrays.copyOfRange(args, 2, args.length);
-            }
+        if((commandName.equals("cp") || commandName.equals("ls")) && args[1].equals("-r")) {
+            commandName += " -r";
+            // remove the "-r" and commandName from the list
+            args = Arrays.copyOfRange(args, 2, args.length);
         }
         else {
             // remove the command name from the list
