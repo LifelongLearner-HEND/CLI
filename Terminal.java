@@ -319,7 +319,9 @@ public class Terminal {
 
 
                 // pwd command
-
+                if(parserObject.getCommandName().equals("pwd")){
+                    pwd( parserObject.getArgs(input) )
+                }
 
                 // cd command
                 if(parserObject.getCommandName().equals("cd")) {
@@ -342,12 +344,23 @@ public class Terminal {
                     history(commandHistory);
                 }
                 // mkdir command
+                else if (parserObject.getCommandName().equals("mkdir") ) {
+                    mkdir( parserObject.getArgs(input) );
+                }
 
                 // cat command
 
                 // wc command
 
                 // cp command
+                else if( (parserObject.getCommandName().equals("cp")){
+                    cp(parserObject.getArgs(input));
+                }
+
+                //cp -r command
+                else if( (parserObject.getCommandName().equals("cp")){
+                    cp_r(parserObject.getArgs(input));
+                }
 
                 // rm command
 
