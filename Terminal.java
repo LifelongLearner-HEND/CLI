@@ -6,16 +6,13 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.*;
-
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class Terminal {
     File currentDirectory = new File(System.getProperty("user.dir"));
+
+    // Command 1: lists the contents of the current directory
+    // sorted in alphabetical order or reversed
     void ls(String command, String[] input) {
         File[] files = currentDirectory.listFiles();
         // check if the directory is empty
@@ -42,7 +39,7 @@ public class Terminal {
             System.out.println("Invalid Command Arguments!");
         }
     }
-
+    // Command 2: changes the current directory
     void cd(String[] args) {
         // cd to home directory
         if(args.length == 0) {
@@ -94,6 +91,7 @@ public class Terminal {
         }
     }
 
+    // Command 3: creates a new file in a given path
     void touch(String[] input) {
         // touch create absolute path
         if(input.length == 1 && input[0].contains(":")) {
@@ -174,12 +172,13 @@ public class Terminal {
             System.out.println("Invalid Command Arguments!");
         }
     }
+    // Command 4: list the history of the commands
     void history(ArrayList<String> arr) {
         for(int i = 0; i < arr.size(); i++) {
             System.out.println((i+1) + "  " + arr.get(i));
         }
     }
-
+    // Command 5: print the current working directory
     public static String pwd(String [] args){
         if(args.length != 0){
             return "Invalid arguments this method does not take an argument";
@@ -187,16 +186,14 @@ public class Terminal {
         return System.getProperty("user.dir");
     }
 
-    //Method mkdir that takes a list or arguments and makes a directory for each
+    // Command 6: Method mkdir that takes a list or arguments and makes a directory for each
     public static void mkdir (String [] args){
 
         for (String arg :args) {
             Path directory;
-
             directory = Paths.get(arg);
             //Path.get() method returns a Path object that represents the file or directory specified by the input String.
             //automatically handles platform-specific path syntax (such as using backslashes on Windows and forward slashes on Unix-based systems)
-
             // check if directory is not empty
             if( directory.toString().equals( "" ) ){
                 System.out.println("Failed to make Directory missing name ");
@@ -208,12 +205,9 @@ public class Terminal {
                 continue;
 
             }
-
             //in this case
-
             // If the argument is a path, create the directory at the specified path.
             // If it's just a directory name, create it in the current directory.
-
             // tries to create the directory
             try {
                 Files.createDirectories(directory);
@@ -224,23 +218,18 @@ public class Terminal {
                 System.err.println("Failed to create directory: " + directory);
                 e.printStackTrace();
             }
-
         }
-
     }
 
-    //Copies file to another file
+    //Command 7: Copies file to another file
     public static void cp(String [] args) throws IOException {
         if(args.length != 2){
             System.out.println("invalid number of arguments ");
         }
-
         Path sourcePath = Paths.get( args[0] );
         Path destinationPath = Paths.get( args[1] );
 
-
         //check if directory already exists
-
         if (Files.exists(destinationPath) ) {
             System.out.println( "File already exists: " + destinationPath );
             return;
@@ -248,7 +237,6 @@ public class Terminal {
 
         //Checks is source file exists
         //we don't have to check on the destination file,because if it doesn't exist it will be created in the file directory
-
         if (Files.exists( sourcePath )){
             try {
                 //Files.copy method expects Path objects as arguments, not Strings,so we need to convert it to path type;
@@ -262,10 +250,8 @@ public class Terminal {
         else {
             System.out.println(" Source file does not exist" + sourcePath);
         }
-
-
     }
-
+    // Command 8: Moves file to another file
     public static void cp_r(String [] args ) throws IOException {
 
         if(args.length != 2){
@@ -284,7 +270,6 @@ public class Terminal {
 
         // Checking if the source path exists
         // Don't have to check on the target(to be copied),because if it doesn't exist it will be created in the same directory
-
         if (Files.exists(sourcePath)) {
             //  Files.walk() to traverses the directory tree starting from the sourcePath
             try {
@@ -312,15 +297,14 @@ public class Terminal {
             // If the source directory does not exist, throw an IOException
             throw new IOException("Source directory does not exist: " + sourcePath);
         }
-
     }
-
-
-    Scanner scanner = new Scanner(System.in);
-    Parser parser = new Parser();
+    // Command 9: takes one argument and prints it
     void echo(String[] arr){
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+        if(arr.length == 1) {
+            System.out.println(arr[0]);
+        }
+        else {
+            System.out.println("Invalid Command Arguments!");
         }
     }
     void cat(String[] arr){
@@ -361,6 +345,7 @@ public class Terminal {
         else
             System.out.println("An error occurred.");
     }
+    // Command 10: removes file
     void rm(String[] arr){
         if (arr.length == 1){
             File file = new File(arr[0]);
@@ -373,6 +358,7 @@ public class Terminal {
         else
             System.out.println("An error occurred.");
     }
+    // Command 11
     void wc (String[] arr){
         if (arr.length == 1){
             int lines = 0,words = 0,characters = 0;
@@ -409,10 +395,7 @@ public class Terminal {
             }
         }
     }
-
-
-
-
+    // Program Interface
     void chooseCommandAction() throws IOException {
         String input;
         Scanner scanner = new Scanner(System.in);
@@ -426,11 +409,10 @@ public class Terminal {
                 // echo command
                 if (parserObject.getCommandName().equals("echo"))
                     echo(parserObject.getArgs(input));
-                    // pwd command
+                // pwd command
                 else if(parserObject.getCommandName().equals("pwd")){
                     System.out.println(pwd(parserObject.getArgs(input)));
                 }
-
                 // cd command
                 else if(parserObject.getCommandName().equals("cd")) {
                     cd(parserObject.getArgs(input));
@@ -455,7 +437,6 @@ public class Terminal {
                 else if (parserObject.getCommandName().equals("mkdir") ) {
                     mkdir( parserObject.getArgs(input) );
                 }
-
                 // cat command
                 else if (parserObject.getCommandName().equals("cat")){
                     cat(parserObject.getArgs(input));
@@ -468,12 +449,10 @@ public class Terminal {
                 else if((parserObject.getCommandName().equals("cp"))){
                     cp(parserObject.getArgs(input));
                 }
-
                 //cp -r command
                 else if((parserObject.getCommandName().equals("cp -r"))){
                     cp_r(parserObject.getArgs(input));
                 }
-
                 // rm command
                 else if (parserObject.getCommandName().equals("rm")) {
                     rm(parserObject.getArgs(input));
@@ -484,5 +463,11 @@ public class Terminal {
             }
             input = scanner.nextLine();
         }
+    }
+}
+class Main {
+    public static void main(String[] args) throws IOException {
+        Terminal terminal = new Terminal();
+        terminal.chooseCommandAction();
     }
 }
