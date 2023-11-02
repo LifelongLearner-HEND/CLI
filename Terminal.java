@@ -1,6 +1,12 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class Terminal {
     File currentDirectory = new File(System.getProperty("user.dir"));
@@ -168,13 +174,11 @@ public class Terminal {
         }
     }
 
-    public static String pwd (String [] args){
+    public static String pwd(String [] args){
         if(args.length != 0){
             return "Invalid arguments this method does not take an argument";
         }
-
         return System.getProperty("user.dir");
-
     }
 
     //Method mkdir that takes a list or arguments and makes a directory for each
@@ -221,7 +225,6 @@ public class Terminal {
 
     //Copies file to another file
     public static void cp(String [] args) throws IOException {
-
         if(args.length != 2){
             System.out.println("invalid number of arguments ");
         }
@@ -305,7 +308,7 @@ public class Terminal {
         }
 
     }
-    void chooseCommandAction() {
+    void chooseCommandAction() throws IOException {
         String input;
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();
@@ -320,7 +323,7 @@ public class Terminal {
 
                 // pwd command
                 if(parserObject.getCommandName().equals("pwd")){
-                    pwd( parserObject.getArgs(input) )
+                    System.out.println(pwd(parserObject.getArgs(input)));
                 }
 
                 // cd command
@@ -353,12 +356,12 @@ public class Terminal {
                 // wc command
 
                 // cp command
-                else if( (parserObject.getCommandName().equals("cp")){
+                else if((parserObject.getCommandName().equals("cp"))){
                     cp(parserObject.getArgs(input));
                 }
 
                 //cp -r command
-                else if( (parserObject.getCommandName().equals("cp")){
+                else if((parserObject.getCommandName().equals("cp -r"))){
                     cp_r(parserObject.getArgs(input));
                 }
 
