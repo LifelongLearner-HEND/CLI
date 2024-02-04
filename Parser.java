@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Parser {
+class Parser {
     private String commandName;
     private String[] args;
 
@@ -26,6 +26,7 @@ public class Parser {
         );
         return validCommands.containsKey(command);
     }
+
     // parse the input to --> command + list of arguments
     public String[] getArgs(String input) {
         // remove leading and trailing spaces
@@ -35,15 +36,12 @@ public class Parser {
         commandName = args[0];
 
         // handling "cp -r" and "ls -r" command
-        if((commandName.equals("cp") || commandName.equals("ls")) && args.length >= 2) {
-            if(args[1].equals("-r")){
+        if ((commandName.equals("cp") || commandName.equals("ls")) && args.length >= 2 && args[1].equals("-r")) {
                 commandName += " -r";
-                // remove the "-r" and commandName from the list
+                // remove the first two arguments from the list
                 args = Arrays.copyOfRange(args, 2, args.length);
-            }
-        }
-        else {
-            // remove the command name from the list
+        } else {
+            // remove the first argument from the list
             args = Arrays.copyOfRange(args, 1, args.length);
         }
         return args;
