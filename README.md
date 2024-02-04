@@ -29,7 +29,6 @@ Main Method:
 | -------- | -------- |
 | `echo` | Takes 1 argument and prints it. |
 | `pwd` | Takes no arguments and prints the current path. |
-| `cd` | 1.
-`cd` takes no arguments and changes the current path to the path of your home directory. 2.
-`cd` takes 1 argument which is “..” (e.g. cd ..) and changes the current directory to the previous directory. 3.
+| `cd` |  `cd` takes no arguments and changes the current path to the path of your home directory. 
+`cd` takes 1 argument which is “..” (e.g. cd ..) and changes the current directory to the previous directory. 
 `cd` takes 1 argument which is either the full path or the relative (short) path and changes the current path to that path.|
