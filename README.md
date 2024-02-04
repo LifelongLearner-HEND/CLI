@@ -49,3 +49,24 @@ Main Method:
 | `wc` | Wc stands for “word count,” and as the name suggests, it is mainly used for counting purpose. By default, it displays four-columnar <br> First column shows number of lines present in a file specified, second column shows number of words present in the file, third column shows number of characters present in file and fourth column itself is the file name which are given as arguments <br> Sample Input: <br> `wc file.txt` <br> Sample Output: <br> `9 79 483 file.txt` <br> Explanation: <br> # 9 lines, 79 word, 483 character with spaces, file name |
 | `history` | Takes no parameters and displays an enumerated list with the commands you’ve used in the past. <br> Sample Input: <br> `history` <br> Sample Output <br> `1 ls` <br> `2 mkdir tutorial` <br> `3 history` |
 | `exit` | Terminates the program. |
+
+## Dependencies
+This CLI project is implemented in Java and does not require any external dependencies beyond the standard Java libraries.
+
+## How to use CLI?
+To use the CLI, follow these steps:
+
+1- Run the program.
+2- The CLI will start and display a prompt, awaiting your input.
+3- Enter commands and press Enter to execute them.
+4- The CLI will respond with the output of the executed command.
+5- Continue entering commands until you want to exit, then enter "exit."
+
+## Contributing
+Feel free to contribute to this project by forking and creating pull requests. Report any issues or suggest improvements through the GitHub issue tracker.
+
+## Contributers
+This project is developed by the following team members:
+- [Hend Ahmad](https://github.com/LifelongLearner-HEND)
+- [Farah Mohammad](https://github.com/farah2543)
+- [Marawan Ahmad](https://github.com/maro312)
