@@ -5,30 +5,27 @@ This project implements a simple Command Line Interpreter (CLI) for your operati
 
 ## Project Structure
 ### Parser class
-Attributes:
-• `String commandName`: Represents the name of the command.
+Attributes: <br>
+• `String commandName`: Represents the name of the command. <br>
+• `String[] args`: Represents the arguments associated with the command. 
 
-• `String[] args`: Represents the arguments associated with the command.
-
-Methods:
-• `boolean parse(String input)`: Parses the input string and divides it into `commandName` and `args`.
-
-• `String getCommandName()`: Returns the parsed command name.
-
+Methods: <br>
+• `boolean parse(String input)`: Parses the input string and divides it into `commandName` and `args`. <br>
+• `String getCommandName()`: Returns the parsed command name. <br>
 • `String[] getArgs()`: Returns the parsed command arguments.
 
 ### Terminal Class
-Attributes:
+Attributes: <br>
 • `Parser parser`: An instance of the `Parser class` to handle command parsing.
 
-Methods:
-• `public String pwd()`: Implements the "pwd" command(for example) to display the current working directory.
+Methods: <br>
+• `public String pwd()`: Implements the "pwd" command(for example) to display the current working directory. <br>
 
-• `public void cd(String[] args)`: Implements the "cd" command to change the current directory.
+• `public void cd(String[] args)`: Implements the "cd" command to change the current directory. <br>
 
 • `public void chooseCommandAction()`: Chooses the suitable command method to be called based on the parsed input.
 
-Main Method:
+Main Method: <br>
 `public static void main(String[] args)`: The main entry point of the program. Instantiates the Terminal class and manages the CLI loop.
 
 ## Available commands 
