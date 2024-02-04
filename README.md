@@ -56,11 +56,7 @@ This CLI project is implemented in Java and does not require any external depend
 ## How to use CLI?
 To use the CLI, follow these steps:
 
-1- Run the program.
-2- The CLI will start and display a prompt, awaiting your input.
-3- Enter commands and press Enter to execute them.
-4- The CLI will respond with the output of the executed command.
-5- Continue entering commands until you want to exit, then enter "exit."
+1- Run the program. <br> 2- The CLI will start and display a prompt, awaiting your input. <br> 3- Enter commands and press Enter to execute them. <br> 4- The CLI will respond with the output of the executed command. <br> 5- Continue entering commands until you want to exit, then enter "exit."
 
 ## Contributing
 Feel free to contribute to this project by forking and creating pull requests. Report any issues or suggest improvements through the GitHub issue tracker.
